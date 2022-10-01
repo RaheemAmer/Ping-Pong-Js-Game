@@ -26,15 +26,26 @@ class Paddle {
 
 class Ball {
     constructor({ position }) {
+        const direction = {
+            x: Math.random() - 0.5 >= 0 ? -1 : 1,
+            y: Math.random() - 0.5 >= 0 ? -1 : 1,
+        }
         this.position = position;
         this.velocity = {
-            x: 1,
-            y: 1,
+            x: direction.x,
+            y: direction.y,
         }
+        this.width = 10;
+        this.height = 10;
     }
     draw() {
+        c.fillStyle = 'white';
         c.fillRect(this.position.x, this.position.y, this.width, this.height);
-
+    }
+    update() {
+        this.draw();
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
     }
 }
 
@@ -52,6 +63,12 @@ const Paddle2 = new Paddle({
     },
 })
 
+const ball = new Ball({
+    position: {
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+    }
+})
 
 function animate() {
     requestAnimationFrame(animate);
@@ -59,6 +76,7 @@ function animate() {
     c.fillRect(0, 0, canvas.width, canvas.height);
     Paddle1.update();
     Paddle2.update();
+    ball.update()
 }
 animate();
 
