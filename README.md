@@ -12,5 +12,5 @@ A ping pong game built using canvas and JS
 6. Make Guest and user looby system
 7. Save score for each user
 8. Use something with realtime or socket.io as an experiment (Chat using realtime in looby)
-9 Create a menu
+9. Create a menu
 10. Add songs to play while users or guest hangout in the looby
